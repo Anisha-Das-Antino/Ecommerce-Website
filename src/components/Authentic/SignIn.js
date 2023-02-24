@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
-import Input from "../components/Input";
-import { auth , provider } from "../Firebase";
+import Input from "../Input";
+import { auth, signInWithGoogle } from "../../Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {
     CardWrapper, CardHeader, CardHeading, CardBody, CardFieldset, CardOptions, CardOptionsItem, CardOptionsNote, CardButton, CardLink
@@ -62,9 +62,11 @@ function SignIn({ setToken }) {
 
                         <CardOptions>
                             <CardOptionsItem>
-                                <Link to="/">
-                                    <FontAwesomeIcon size="2x" icon={faGoogle} />
-                                </Link>
+                                <button onClick={signInWithGoogle}>
+                                    <Link to="/">
+                                        <FontAwesomeIcon size="2x" icon={faGoogle} />
+                                    </Link>
+                                </button>
 
                             </CardOptionsItem>
 

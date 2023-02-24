@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Routes ,useNavigate} from "react-router-dom";
 import styled from "styled-components";
-import Home from "../Pages/Home";
+import Home from "../../Pages/Home";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 

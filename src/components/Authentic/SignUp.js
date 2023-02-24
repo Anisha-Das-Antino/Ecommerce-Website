@@ -4,11 +4,12 @@ import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import Input from "../components/Input";
+import { signInWithGoogle, auth } from "../../Firebase";
+import Input from "../Input";
 import {
     CardWrapper, CardHeader, CardHeading, CardBody, CardFieldset, CardOptions, CardOptionsItem, CardOptionsNote, CardButton, CardLink
 } from "./Styles";
-import { auth } from "../Firebase";
+
 
 
 function SignUp({ setToken }) {
@@ -65,9 +66,11 @@ function SignUp({ setToken }) {
                         <CardOptionsNote>Or Sign Up With</CardOptionsNote>
                         <CardOptions>
                             <CardOptionsItem>
-                                <Link to="/">
-                                    <FontAwesomeIcon size="2x" icon={faGoogle} />
-                                </Link>
+                                <button onClick={signInWithGoogle}>
+                                    <Link to="/">
+                                        <FontAwesomeIcon size="2x" icon={faGoogle} />
+                                    </Link>
+                                </button>
 
                             </CardOptionsItem>
 

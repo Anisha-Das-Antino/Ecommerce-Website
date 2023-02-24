@@ -1,4 +1,4 @@
-import { CardInput } from "../Authentic/Styles";
+import { CardInput } from "./Authentic/Styles";
 const Input = ({
     name,
     type,

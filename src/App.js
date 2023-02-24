@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Auth from "./Authentic/Auth";
+import Auth from "./components/Authentic/Auth";
 import Home from "./Pages/Home";
 
 import { BrowserRouter} from "react-router-dom";
