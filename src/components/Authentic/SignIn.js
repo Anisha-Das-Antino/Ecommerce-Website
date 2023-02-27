@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import Input from "../Input";
-import { auth, signInWithGoogle } from "../../Firebase";
+import { auth, signInWithGoogle, signInWithFacebook } from "../../Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {
     CardWrapper, CardHeader, CardHeading, CardBody, CardFieldset, CardOptions, CardOptionsItem, CardOptionsNote, CardButton, CardLink
@@ -18,6 +18,9 @@ function SignIn({ setToken }) {
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const token = localStorage.getItem("token");
+    console.log({ token });
+
     const submitHandler = (data) => {
         if (!data.email || !data.password) {
             setError("Fill all the fields");
@@ -26,14 +29,18 @@ function SignIn({ setToken }) {
         setError("");
 
         signInWithEmailAndPassword(auth, data.email, data.password)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        navigate("/");
-        setToken(true);
+            .then(res =>
+                console.log(res)
+            )
+            .catch(error =>
+                console.log(error)
+            )
+        if (token) {
+
+            navigate("/");
+        }
+
+        // setToken(true);
         console.log(data);
         // console.log("hello works ")
         // const request = {
@@ -42,7 +49,9 @@ function SignIn({ setToken }) {
         // }
         // console.log(request);
     }
-
+    useEffect(() => {
+        localStorage.clear();
+    }, [])
     return (
         <form onSubmit={handleSubmit(submitHandler)}   >
             <CardWrapper>
@@ -71,9 +80,12 @@ function SignIn({ setToken }) {
                             </CardOptionsItem>
 
                             <CardOptionsItem>
-                                <Link to="/">
-                                    <FontAwesomeIcon size="2x" icon={faFacebook} />
-                                </Link>
+                                <button onClick={signInWithFacebook}>
+                                    <Link to="/">
+                                        <FontAwesomeIcon size="2x" icon={faFacebook} />
+                                    </Link>
+                                </button>
+
                             </CardOptionsItem>
                         </CardOptions>
 

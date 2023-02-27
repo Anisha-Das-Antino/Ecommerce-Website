@@ -87,9 +87,11 @@ export const CardOptions = styled.ul`
 `;
 
 export const CardOptionsItem = styled.li`
+
   &:nth-of-type(n + 2) {
     margin-left: 16px;
   }
+  
 `;
 
 export const CardButton = styled.button`

@@ -4,7 +4,7 @@ import { faFacebook, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { signInWithGoogle, auth } from "../../Firebase";
+import { signInWithGoogle, auth, signInWithFacebook } from "../../Firebase";
 import Input from "../Input";
 import {
     CardWrapper, CardHeader, CardHeading, CardBody, CardFieldset, CardOptions, CardOptionsItem, CardOptionsNote, CardButton, CardLink
@@ -28,12 +28,12 @@ function SignUp({ setToken }) {
         setError("");
 
         createUserWithEmailAndPassword(auth, data.email, data.password, data.ConfirmPassword)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(error => {
-                console.log(error);
-            })
+            .then(res =>
+                console.log(res)
+            )
+            .catch(error =>
+                console.log(error)
+            )
 
         navigate("/");
         // setValues({ ...values, email: e.target.value })
@@ -75,9 +75,11 @@ function SignUp({ setToken }) {
                             </CardOptionsItem>
 
                             <CardOptionsItem>
-                                <Link to="/">
-                                    <FontAwesomeIcon size="2x" icon={faFacebook} />
-                                </Link>
+                                <button onClick={signInWithFacebook}>
+                                    <Link to="/">
+                                        <FontAwesomeIcon size="2x" icon={faFacebook} />
+                                    </Link>
+                                </button>
                             </CardOptionsItem>
 
                         </CardOptions>
