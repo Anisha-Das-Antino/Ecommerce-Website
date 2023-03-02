@@ -1,0 +1,17 @@
+[
+    {
+        "img": "https://picsum.photos/500/300?img=1",
+        "caption": "First slide label",
+        "data": "Nulla vitae elit libero, a pharetra augue mollis interdum."
+    },
+    {
+        "img" : "https://picsum.photos/500/300?img=2",
+        "caption" : "Second slide label",
+        "data" : "Nulla vitae elit libero, a pharetra augue mollis interdum."
+    },
+    {
+        "img" : "https://picsum.photos/500/300?img=3",
+        "caption" : "Third slide label",
+        "data" : "Nulla vitae elit libero, a pharetra augue mollis interdum."
+    }
+]

@@ -13,17 +13,28 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+
 
 const signInWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider).then((result) => {
-    console.log(result);
-  
+    console.log(result?.user?.accessToken,"---------------");
+    localStorage.setItem("token",result?.user?.accessToken)
+
   }).catch((error) => {
     console.log(error);
   });
 };
 
+const signInWithFacebook = () => {
+  const provider = new FacebookAuthProvider();
+  signInWithPopup(auth, provider).then((result) => {
+    console.log(result);
 
+  }).catch((error) => {
+    console.log(error);
+  });
 
-export { app, auth, provider, signInWithGoogle };
+};
+
+export { app, auth, signInWithGoogle, signInWithFacebook };
