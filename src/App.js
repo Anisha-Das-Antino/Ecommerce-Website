@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Auth from "./components/Authentic/Auth";
-import Home from "./Pages/Home";
+import Home from "./components/Pages/Home";
 import Cart from "./components/Cart";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
