@@ -9,21 +9,21 @@ const Cart = createContext();
 
 const Context = ({ children }) => {
 
-    const prod = charger.map((product, index) => (
-        <Products
-            id={product.id}
-            key={index}
-            title={product.title}
-            price={product.price}
-            button={product.button}
-            img={product.img}
-            product = {product}
-            company = {product.company}
-        />
-    ));
+    // const prod = charger.map((product, index) => (
+    //     <Products
+    //         id={product.id}
+    //         key={index}
+    //         title={product.title}
+    //         price={product.price}
+    //         button={product.button}
+    //         img={product.img}
+    //         product = {product}
+    //         company = {product.company}
+    //     />
+    // ));
 
     const [state, dispatch] = useReducer(Reducers, {
-        prod: prod,
+
         cart: [],
 
     })

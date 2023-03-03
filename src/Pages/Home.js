@@ -22,20 +22,6 @@ const Home = () => {
             <Nav />
             <CarouselComponent />
 
-            {/* <Carousel breakPoints={breakPoints} >
-                {products.map((product, index) => (
-                    <Products
-                        product={product}
-                        id={product.id}
-                        key={index}
-                        title={product.title}
-                        price={product.price}
-                        button={product.button}
-                        img={product.img}
-                        comapny= {product.comapny}
-                    />
-                ))}
-            </Carousel> */}
             <h1 className="font-bold text-[2rem] text-[#4c88a7] m-[2rem] px-[8rem] py-[2rem]">Head Phone</h1>
             <Carousel breakPoints={breakPoints} >
                 {headPhone.map((product, index) => (
