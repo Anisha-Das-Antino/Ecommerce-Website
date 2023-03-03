@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { CartState } from './context/Context';
 
-const Products = ({ product, id, img, title, price, button }) => {
+const Products = ({ product, id, img, title, price, button, company }) => {
 
     const { state: { cart }, dispatch, } = CartState();
 
@@ -12,7 +12,7 @@ const Products = ({ product, id, img, title, price, button }) => {
             <Card style={{ width: '18rem', left: "32px" }} >
                 <Card.Img variant="top" src={img} />
                 <Card.Body >
-                    <Card.Title>{title}</Card.Title>
+                    <Card.Title>{company}</Card.Title>
                     <Card.Text style={{ fontWeight: "bolder", color: "#4e4246" }}>
                         $ {price}
                     </Card.Text>

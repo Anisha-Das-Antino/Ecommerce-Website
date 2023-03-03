@@ -9,33 +9,57 @@ import Input from "../Input";
 import {
     CardWrapper, CardHeader, CardHeading, CardBody, CardFieldset, CardOptions, CardOptionsItem, CardOptionsNote, CardButton, CardLink
 } from "./Styles";
-
+import axios from "axios";
+import { async } from "q";
 
 
 function SignUp({ setToken }) {
-    // const [values, setValues] = useState({
-    //     email: "",
-    //     password: "",
-    // })
+
+    const BASE_URL = "https://92bd-2401-4900-1cbd-9361-15a-499f-f047-837f.in.ngrok.io/auth/signup/";
+
+
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
     const navigate = useNavigate();
-    const submitHandler = (data) => {
-        if (!data.email || !data.password || !data.ConfirmPassword) {
+
+    const submitHandler = async (data) => {
+        if (!data.username || !data.email || !data.password || !data.ConfirmPassword) {
             setError("Fill all the fields");
             return;
         }
         setError("");
+        try {
+            const response = await axios.post(BASE_URL,
+                {
+                    username: data.username,
+                    email: data.email,
+                    password: data.password,
+                    c_password: data.ConfirmPassword
+                });
+            console.log("response");
+            console.log(response);
+            if (response.data.status == 200){
+                navigate("/");
+            }
+            else {
+                alert(response.data.messasge);
+            }
+        }
+        catch (e) {
+            console.log("error");
+            console.log(error);
+        }
 
-        createUserWithEmailAndPassword(auth, data.email, data.password, data.ConfirmPassword)
-            .then(res =>
-                console.log(res)
-            )
-            .catch(error =>
-                console.log(error)
-            )
 
-        navigate("/");
+        // createUserWithEmailAndPassword(auth, data.email, data.password, data.ConfirmPassword)
+        //     .then(res =>
+        //         console.log(res)
+        //     )
+        //     .catch(error =>
+        //         console.log(error)
+        //     )
+
+        // navigate("/");
         // setValues({ ...values, email: e.target.value })
         console.log(data);
     }
@@ -49,7 +73,9 @@ function SignUp({ setToken }) {
                 </CardHeader>
 
                 <CardBody>
-
+                    <CardFieldset>
+                        <Input type="text" name="username" placeholder="User Name" register={register} />
+                    </CardFieldset>
                     <CardFieldset>
                         <Input type="email" name="email" placeholder="E-mail" register={register} />
                     </CardFieldset>

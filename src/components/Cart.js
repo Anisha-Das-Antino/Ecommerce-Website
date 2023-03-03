@@ -5,7 +5,10 @@ import "../styles.css";
 import { useState, useEffect } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 import Nav from './Nav';
+
+
 const Cart = () => {
   const {
     state: { cart },
@@ -31,10 +34,10 @@ const Cart = () => {
               <ListGroup.Item key={product.id}>
                 <Row>
                   <Col md={2}>
-                    <Image src={product.img} alt={product.title} fluid rounded />
+                    <Image src={product.img} alt={product.company} fluid rounded />
                   </Col>
                   <Col md={2}>
-                    <span>{product.title}</span>
+                    <span>{product.company}</span>
                   </Col>
                   <Col md={3}>
                     <span>$ {product.price}</span>
@@ -86,6 +89,7 @@ const Cart = () => {
           {/* </Link> */}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

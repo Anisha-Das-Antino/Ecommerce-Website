@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CardWrapper = styled.div`
   overflow: hidden;
   padding: 0 0 32px;
-  margin: 48px auto 0;
+  margin: 40px auto 0;
   width: 300px;
   font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05), 0 0px 40px rgba(0, 0, 0, 0.08);
@@ -12,8 +12,8 @@ export const CardWrapper = styled.div`
 
 
 export const CardHeader = styled.header`
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 `;
 
 export const CardHeading = styled.h1`
@@ -50,7 +50,7 @@ export const CardInput = styled.input`
   padding: 7px 0;
   width: 100%;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 12px;
   border-top: 0;
   border-right: 0;
   border-bottom: 1px solid #ddd;
@@ -89,7 +89,7 @@ export const CardOptions = styled.ul`
 export const CardOptionsItem = styled.li`
 
   &:nth-of-type(n + 2) {
-    margin-left: 16px;
+    margin-left: 22px;
   }
   
 `;
@@ -97,7 +97,7 @@ export const CardOptionsItem = styled.li`
 export const CardButton = styled.button`
   display: block;
   width: 100%;
-  padding: 12px 0;
+  padding: 10px 0;
   font-family: inherit;
   font-size: 14px;
   font-weight: 700;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Reducers = (state, action) => {
 
     switch (action.type) {

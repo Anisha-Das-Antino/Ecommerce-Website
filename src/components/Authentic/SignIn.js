@@ -9,11 +9,13 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import {
     CardWrapper, CardHeader, CardHeading, CardBody, CardFieldset, CardOptions, CardOptionsItem, CardOptionsNote, CardButton, CardLink
 } from "./Styles";
-
+import axios from "axios";
 
 function SignIn({ setToken }) {
     // const [email, setEmail] = useState("");
     // const [password, setPassword] = useState("");
+    const BASE_URL = "https://92bd-2401-4900-1cbd-9361-15a-499f-f047-837f.in.ngrok.io/auth/login/";
+
 
     const { register, handleSubmit } = useForm();
     const [error, setError] = useState("");
@@ -21,24 +23,45 @@ function SignIn({ setToken }) {
     const token = localStorage.getItem("token");
     console.log({ token });
 
-    const submitHandler = (data) => {
+    const submitHandler = async (data) => {
         if (!data.email || !data.password) {
             setError("Fill all the fields");
             return;
         }
         setError("");
 
-        signInWithEmailAndPassword(auth, data.email, data.password)
-            .then(res =>
-                console.log(res)
-            )
-            .catch(error =>
-                console.log(error)
-            )
-        if (token) {
+        try {
+            const response = await axios.post(BASE_URL,
+                {
+                    email: data.email,
+                    password: data.password
+                });
+            console.log("response");
+            console.log(response.data.status);
+            if (response.data.status == 200) {
+                navigate("/");
+            }
+            else {
+                alert("Login with valid credentials");
+            }
 
-            navigate("/");
         }
+        catch (e) {
+            console.log("error");
+            console.log(error);
+        }
+
+        // signInWithEmailAndPassword(auth, data.email, data.password)
+        //     .then(res =>
+        //         console.log(res)
+        //     )
+        //     .catch(error =>
+        //         console.log(error)
+        //     )
+        // if (token) {
+
+        //     navigate("/");
+        // }
 
         // setToken(true);
         console.log(data);

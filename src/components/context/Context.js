@@ -1,17 +1,15 @@
 import React, { useContext } from 'react'
 import { createContext, useState } from 'react';
 import Products from '../Products';
-import data from "../Pages/data.json";
 import { useReducer } from 'react';
 import Reducers from './Reducers';
-
+import charger from "../../utils/charger.json";
 
 const Cart = createContext();
 
 const Context = ({ children }) => {
-    const [products, setProducts] = useState(data);
 
-    const prod = products.map((product, index) => (
+    const prod = charger.map((product, index) => (
         <Products
             id={product.id}
             key={index}
@@ -19,6 +17,8 @@ const Context = ({ children }) => {
             price={product.price}
             button={product.button}
             img={product.img}
+            product = {product}
+            company = {product.company}
         />
     ));
 
