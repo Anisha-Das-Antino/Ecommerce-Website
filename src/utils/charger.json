@@ -1,0 +1,66 @@
+[
+    {
+        "id": "11",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "Oppo"
+    },
+    {
+        "id": "12",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "Samsung"
+    },
+    {
+        "id": "13",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "Vivo"
+    },
+    {
+        "id": "14",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "Motorola"
+    },
+    {
+        "id": "15",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "I Phone"
+    },
+    {
+        "id": "16",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "One Plus"
+    },
+    {
+        "id": "17",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "Readme"
+    },
+    {
+        "id": "18",
+        "title": "Charger",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
+        "price": "2000",
+        "button": "Details",
+        "company": "Pixel"
+    }
+]
