@@ -4,7 +4,10 @@ const Input = ({
     type,
     placeholder,
     register,
-    required
+    required, 
+    maxLength,
+    minLength,
+    pattern
 }) => {
 
     return (
@@ -13,7 +16,7 @@ const Input = ({
             name={name}
             type={type}
             
-            {...(register && register(`${name}` , { required: required ? true: false }  ))}
+            {...(register && register(`${name}` , { required: required ? true: false , maxLength:maxLength?maxLength:null, minLength:minLength?minLength:null}, {pattern:pattern ? pattern: null}  ))}
         />
         </>);
 };

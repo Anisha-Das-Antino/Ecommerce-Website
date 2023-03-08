@@ -5,7 +5,8 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "Oppo"
+        "company": "Oppo",
+        "inStock" : "4"
     },
     {
         "id": "12",
@@ -13,7 +14,8 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "Samsung"
+        "company": "Samsung",
+        "inStock" : "4"
     },
     {
         "id": "13",
@@ -21,7 +23,8 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "Vivo"
+        "company": "Vivo",
+        "inStock" : "4"
     },
     {
         "id": "14",
@@ -29,7 +32,8 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "Motorola"
+        "company": "Motorola",
+        "inStock" : "4"
     },
     {
         "id": "15",
@@ -37,7 +41,8 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "I Phone"
+        "company": "I Phone",
+        "inStock" : "4"
     },
     {
         "id": "16",
@@ -45,7 +50,8 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "One Plus"
+        "company": "One Plus",
+        "inStock" : "4"
     },
     {
         "id": "17",
@@ -53,7 +59,8 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "Readme"
+        "company": "Readme",
+        "inStock" : "4"
     },
     {
         "id": "18",
@@ -61,6 +68,7 @@
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU",
         "price": "2000",
         "button": "Details",
-        "company": "Pixel"
+        "company": "Pixel",
+        "inStock" : "4"
     }
 ]

@@ -58,7 +58,9 @@ const Cart = () => {
                         <option key={x + 1}>{x + 1}</option>
                       ))}
                     </Form.Control>
+                    
                   </Col>
+
                   <Col md={3}>
                     <Button
                       type="button"
@@ -84,9 +86,9 @@ const Cart = () => {
         <div className='filters summary'>
           <span className='title'> Subtotal ({cart.length}) items</span>
           <span style={{ fontWeight: 700, fontSize: 20 }}>Total $ {total}</span>
-          {/* <Link to="/"> */}
+          <Link to="/cart/personalDetails">
           <Button type='button' disabled={cart.length === 0} > Proceed to Checkout</Button>
-          {/* </Link> */}
+          </Link>
         </div>
       </div>
       <Footer />

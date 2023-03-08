@@ -55,25 +55,32 @@ function SignUp({ setToken }) {
 
                 <CardBody>
                     <CardFieldset>
-                        <Input type="text" name="username" placeholder="User Name" register={register} required/>
+                        <Input type="text" name="username" placeholder="User Name"
+                        register={register} 
+                        minLength={4}
+                        required/>
                     </CardFieldset>
                     {errors.username && <p className="text-[red] text-[10px]">Please check the User Name</p>}
                     <CardFieldset>
                         <Input type="email" name="email" placeholder="E-mail"
-                        pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
-                        register={register} required/>
+                        pattern={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
+                        register={register}
+                        
+                        required/>
                     </CardFieldset>
                     {errors.email && <p className="text-[red] text-[10px]">Please check the Email</p>}
                     <CardFieldset>
                         <Input type="password" name="password" placeholder="Password"
-                        pattern= '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/'
-                        register={register}required />
+                        pattern= {/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/}
+                        minLength={8}
+                        register={register} required />
                     </CardFieldset>
                     {errors.password && <p className="text-[red] text-[10px]">Please check the Password</p>}
                  
                     <CardFieldset>
                         <Input type="password" name="ConfirmPassword" placeholder="Confirm Password" 
-                        pattern= '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/'
+                        pattern= {/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/}
+                        minLength={8}
                         register={register} required />
                     </CardFieldset>
                     {errors.ConfirmPassword && <p className="text-[red] text-[10px]">Please check the Confirm Password</p>}

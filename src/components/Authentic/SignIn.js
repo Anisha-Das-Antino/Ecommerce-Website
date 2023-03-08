@@ -57,14 +57,17 @@ function SignIn({ setToken }) {
                 <CardBody>
                     <CardFieldset>
                         <Input type="email" name="email" placeholder="E-mail"
-                        pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+                        pattern={/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/}
                         register={register}
+                        required
                         />
                     </CardFieldset>
                     {errors.email && <p className="text-[red] text-[10px]">Please check the Email</p>}
                     <CardFieldset>
                         <Input type="password" name="password" placeholder="Password" register={register}
-                        pattern= '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/'
+                        pattern= {/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/}
+                        required
+                        minLength={8}
                         />
                     </CardFieldset>
                     {errors.password && <p className="text-[red] text-[10px]">Please check the Password</p>}

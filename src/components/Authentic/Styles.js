@@ -10,7 +10,6 @@ export const CardWrapper = styled.div`
   border-radius: 5px;
 `;
 
-
 export const CardHeader = styled.header`
   padding-top: 30px;
   padding-bottom: 30px;
@@ -37,9 +36,6 @@ export const CardFieldset = styled.fieldset`
     margin-top: 24px;
   }
 
-  &:nth-last-of-type(2) {
-    margin-top: 32px;
-  }
 
   &:last-of-type {
     text-align: center;
@@ -61,9 +57,10 @@ export const CardInput = styled.input`
     border-bottom-color: #e5195f;
     outline: 0;
   }
+  
+
+  
 `;
-
-
 
 export const CardOptionsNote = styled.small`
   padding-top: 8px;
@@ -87,11 +84,9 @@ export const CardOptions = styled.ul`
 `;
 
 export const CardOptionsItem = styled.li`
-
   &:nth-of-type(n + 2) {
     margin-left: 22px;
   }
-  
 `;
 
 export const CardButton = styled.button`
