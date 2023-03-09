@@ -1,37 +1,42 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Nav from "../components/Nav";
-// import { useParams } from 'react-router-dom';
-import { Button } from "react-bootstrap";
+import Rating from 'react-rating-stars-component';
+import { useParams } from "react-router-dom";
 import { CartState } from "../components/context/Context";
+import data from "../utils/product";
+import Nav from "../components/Nav";
+import { Button } from "react-bootstrap";
 
-const Details = ({product, id}) => {
-  console.log(id);
-  console.log(product);
-  // let currentUrl = window.location.href;
-  // let currentId = currentUrl.split("/").slice(-1)[0];
-
-  // useEffect(() => {
-  //   console.log("currentUrl ", currentUrl, currentId);
-  // }, []);
-
-
+const Details = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
   const {
     state: { cart },
     dispatch,
   } = CartState();
 
-  // const {id} = useParams();
-  // const url = "";
-  // useEffect(async ()=>{
-  //     try{
-  //         const res = await axios.get(`${url}?id=${id}`);
-  //         console.log(res);
-  //     }
-  //     catch(error) {
-  //         console.log(error);
-  //     }
-  // }[])
+  useEffect(() => {
+    const product = data.find((p) => p.id === id);
+    setProduct(product);
+  }, [id]);
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
+  const handleRatingChange = (value) => {
+    setRating(value);
+  };
+
+  const handleHoverRatingChange = (value) => {
+    setHoverRating(value);
+  };
+
+  const handleRatingSubmit = () => {
+    console.log(`Submitting rating ${rating} for product ID ${id}`);
+    // You can implement your logic for submitting the rating here
+  };
 
   return (
     <div>
@@ -40,18 +45,25 @@ const Details = ({product, id}) => {
         <div className="w-[100%] px-[12rem] py-[8.5rem] m-auto flex">
           <div className="w-[30%] h-[30%]" >
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqMOLMzCq8J6Wn7k7itOzxwBpJhSpomP8Dlg&usqp=CAU"
+              src={product.img}
               alt="name"
             />
           </div>
 
           <div className="justify-between m-[2rem]  ">
              
-            <h2 className="pb-[1rem] font-semibold">Name</h2>
-            <p className="pb-[1rem] ">Category : Category</p>
+            <h2 className="pb-[1rem] font-semibold">{product.title}</h2>
+            <p className="pb-[1rem] ">{product.company}</p>
             
-            <p className="pb-[1rem]" >   Description gvdcysxuijbhhdcbvchbdhcbshsdbchj cjvdbcjsdc</p>
-            <h3 className="pb-[1rem] font-bold">price</h3>
+            <p className="pb-[1rem]" >{product.desc}</p>
+            <h3 className="pb-[1rem] font-bold">$ {product.price}</h3>
+            <Rating
+                count={5}  // number of rating stars
+                value={product.rating}  // current rating value
+                onChange={handleRatingChange}  // callback function to handle rating change
+                size={24}  // size of the rating stars
+                activeColor="#ffd700"  // color of the active rating stars
+            />
 
             {cart.some((p) => p.id === id) ? (
               <Button

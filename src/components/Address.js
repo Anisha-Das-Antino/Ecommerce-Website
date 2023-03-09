@@ -22,7 +22,7 @@ const Address = () => {
   const navigate = useNavigate();
   const submitHandler = (data) => {
 
-    navigate("/");
+    navigate("/payment");
     console.log(data);
 
     // try {
@@ -42,9 +42,6 @@ const Address = () => {
     //     console.log(errors);
     // }
   };
- 
-
-  
 
   return (
     
@@ -134,7 +131,7 @@ const Address = () => {
 
           <CardFieldset>
             <CardButton type="submit" className="mt-[30px]">
-              Next
+              Proceed to Pay 
             </CardButton>
           </CardFieldset>
         </CardBody>

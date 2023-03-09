@@ -10,8 +10,6 @@ import charger from "../utils/charger.json";
 import laptop from "../utils/laptop.json";
 import mobile from "../utils/mobile.json";
 import smartWatch from "../utils/smartWatch.json";
-import Details from "./details";
-
 
 
 const Home = () => {

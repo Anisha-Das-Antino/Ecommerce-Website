@@ -24,7 +24,6 @@ const Nav = () => {
             </div>
 
             <div>
-
                 <Form className="d-flex">
                     <Form.Control
                         type="search"
@@ -34,7 +33,6 @@ const Nav = () => {
                     />
                     <Button type="search" variant="light">Search</Button>
                 </Form>
-
             </div>
 
             <div >
