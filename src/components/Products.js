@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import Details from "../Pages/details";
 import { CartState } from "./context/Context";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,7 @@ const Products = ({ product, id, img, price, company }) => {
 
   const {
     state: { cart },
-    dispatch,
+    dispatch, 
   } = CartState();
   const navigate = useNavigate();
 

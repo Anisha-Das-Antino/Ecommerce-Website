@@ -6,7 +6,9 @@
         "price": "2000",
         "button": "Details",
         "company": "Oppo",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     },
     {
         "id": "12",
@@ -15,7 +17,9 @@
         "price": "2000",
         "button": "Details",
         "company": "Samsung",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     },
     {
         "id": "13",
@@ -24,7 +28,9 @@
         "price": "2000",
         "button": "Details",
         "company": "Vivo",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     },
     {
         "id": "14",
@@ -33,7 +39,9 @@
         "price": "2000",
         "button": "Details",
         "company": "Motorola",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     },
     {
         "id": "15",
@@ -42,7 +50,9 @@
         "price": "2000",
         "button": "Details",
         "company": "I Phone",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     },
     {
         "id": "16",
@@ -51,7 +61,9 @@
         "price": "2000",
         "button": "Details",
         "company": "One Plus",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     },
     {
         "id": "17",
@@ -60,7 +72,9 @@
         "price": "2000",
         "button": "Details",
         "company": "Readme",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     },
     {
         "id": "18",
@@ -69,6 +83,8 @@
         "price": "2000",
         "button": "Details",
         "company": "Pixel",
-        "inStock" : "4"
+        "inStock" : "4",
+        "desc" : "jvcssbdjvbdfjvbfdvbjfd bkdj b",
+        "rating" : "4.4"
     }
 ]

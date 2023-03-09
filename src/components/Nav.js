@@ -32,7 +32,7 @@ const Nav = () => {
                         className="me-2"
                         aria-label="Search"
                     />
-                    <Button type="submit" variant="light">Search</Button>
+                    <Button type="search" variant="light">Search</Button>
                 </Form>
 
             </div>
