@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import CarouselComponent from "../components/Carousel";
 import Products from "../components/Products";
@@ -11,10 +11,21 @@ import laptop from "../utils/laptop.json";
 import mobile from "../utils/mobile.json";
 import smartWatch from "../utils/smartWatch.json";
 import styled from "styled-components";
+import axios from "axios";
 
 
 const Home = () => {
-    
+    // const BASE_URL = "https://a522-2401-4900-1cbd-f9a6-d9c3-2646-5ce8-316.in.ngrok.io/cat/product/";
+    // const [data, setData] = useState([]);
+
+    // useEffect(()=>{
+    //     axios.get(BASE_URL)
+    //     .then((res)=>{
+    //         setData(res.data);
+    //         console.log(res);
+    //     })
+    //     .catch((e) => console.log(e))
+    // })
 
     const breakPoints = [
         {width: 1, itemsToShow: 1 },
@@ -24,6 +35,7 @@ const Home = () => {
         { width: 1450, itemsToShow: 5 },
         { width: 1750, itemsToShow: 6 },
     ]
+
     return (
         <div>
             <Nav />

@@ -9,6 +9,7 @@ import Details from "../../Pages/details";
 import PersonalDetails from "../PersonsalDetail";
 import Address from "../Address";
 import Payment from "../Payment";
+import Search from "../Search";
 
 function Auth({ setToken }) {
   const token = localStorage.getItem("token");
@@ -35,6 +36,7 @@ function Auth({ setToken }) {
         <Route path="/cart/personalDetails" element={<PersonalDetails />} />
         <Route path="/cart/personalDetails/address" element={<Address />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/search/:title" element={<Search />} />
       </Routes>
     </AuthStyle>
   );

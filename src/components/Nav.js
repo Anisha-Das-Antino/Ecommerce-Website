@@ -7,11 +7,14 @@ import Button from "react-bootstrap/Button";
 import { CartState } from "./context/Context";
 import "../styles.css";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Nav = () => {
   const {
     state: { cart },
   } = CartState();
+
+  const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,14 +27,17 @@ const Nav = () => {
       </div>
 
       <div>
-        <Form className="d-flex ">
+        <Form className="d-flex "  onSubmit={(()=>navigate(`/search/${search}`))} >
           <Form.Control
             type="search"
             placeholder="Search"
             className="me-2"
             aria-label="Search"
+            onChange={(e) => {
+              setSearch(e.target.value.toLowerCase());
+            }}
           />
-          <Button type="search" variant="light">
+          <Button type="search"  variant="light" >
             Search
           </Button>
         </Form>
