@@ -10,9 +10,11 @@ import {
 } from "../components/Authentic/Styles";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 
 const Address = () => {
+
+  const BASE_URL="https://a522-2401-4900-1cbd-f9a6-d9c3-2646-5ce8-316.in.ngrok.io/profile/address/";
   const {
     register,
     handleSubmit,
@@ -25,22 +27,24 @@ const Address = () => {
     navigate("/payment");
     console.log(data);
 
-    // try {
-    //     const response =  axios.post(BASE_URL,
-    //         {
-    //             email: data.email,
-    //             password: data.password
-    //         });
-    //     console.log("response");
-    //     console.log(response.data.status);
-    //     if (response.data.status === 200) {
-    //         navigate("/cart/personalDetails/address");
-    //     }
+    try {
+        const response =  axios.post(BASE_URL,
+            {
+                street : data.landmark,
+                city:data.city,
+                state:data.state,
+                zip_code : data.pinCode
+            });
+        console.log("response");
+        console.log(response.data.status);
+        if (response.data.status === 200) {
+            navigate("/cart/personalDetails/address");
+        }
 
-    // }
-    // catch (e) {
-    //     console.log(errors);
-    // }
+    }
+    catch (e) {
+        console.log(errors);
+    }
   };
 
   return (
@@ -52,18 +56,6 @@ const Address = () => {
         </CardHeader>
 
         <CardBody>
-          <CardFieldset>
-            <Input
-              type="text"
-              name="houseNo"
-              placeholder="House No. / Flat No."
-              register={register}
-              required
-            />
-          </CardFieldset>
-          {errors.houseNo &&
-            <p className="text-[red] text-[10px]">Please Enter House Number or Flat Number</p>
-          }
 
           <CardFieldset>
             <Input
@@ -77,18 +69,6 @@ const Address = () => {
           {errors.landmark && 
             <p className="text-[red] text-[10px]">Please Enter Landmark</p>
           }
-
-          <CardFieldset>
-          <Input
-              type="text"
-              name="country"
-              placeholder="Country"
-              register={register}
-              required
-              minLength={4}
-            />
-          </CardFieldset>
-          {errors.country && <p className="text-[red] text-[10px]">Please Enter Country Name</p>}
 
           <CardFieldset>
           <Input

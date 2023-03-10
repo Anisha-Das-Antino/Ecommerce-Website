@@ -10,20 +10,26 @@ import charger from "../utils/charger.json";
 import laptop from "../utils/laptop.json";
 import mobile from "../utils/mobile.json";
 import smartWatch from "../utils/smartWatch.json";
+import styled from "styled-components";
 
 
 const Home = () => {
     
 
     const breakPoints = [
-        { width: 1, itemsToShow: 3 }
+        {width: 1, itemsToShow: 1 },
+        { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+        { width: 850, itemsToShow: 3 },
+        { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
+        { width: 1450, itemsToShow: 5 },
+        { width: 1750, itemsToShow: 6 },
     ]
     return (
         <div>
             <Nav />
             <CarouselComponent />
 
-            <h1 className="font-bold text-[2rem] text-[#4c88a7] m-[2rem] px-[8rem] py-[2rem]">Head Phone</h1>
+            <Heading>Head Phone</Heading>
             <Carousel breakPoints={breakPoints} >
                 {headPhone.map((product, index) => (
                     <Products
@@ -39,7 +45,7 @@ const Home = () => {
                     
                 ))}
             </Carousel>
-            <h1 className="font-bold text-[2rem] text-[#4c88a7] m-[2rem] px-[8rem] py-[2rem]">Mobile</h1>
+            <Heading>Mobile</Heading>
             <Carousel breakPoints={breakPoints} >
                 {mobile.map((product, index) => (
                     <Products
@@ -53,7 +59,7 @@ const Home = () => {
                     />
                 ))}
             </Carousel>
-            <h1 className="font-bold text-[2rem] text-[#4c88a7] m-[2rem] px-[8rem] py-[2rem]">Charger</h1>
+            <Heading>Charger</Heading>
             <Carousel breakPoints={breakPoints} >
                 {charger.map((product, index) => (
                     <Products
@@ -67,7 +73,7 @@ const Home = () => {
                     />
                 ))}
             </Carousel>
-            <h1 className="font-bold text-[2rem] text-[#4c88a7] m-[2rem] px-[8rem] py-[2rem]">Laptop</h1>
+            <Heading>Laptop</Heading>
             <Carousel breakPoints={breakPoints} >
                 {laptop.map((product, index) => (
                     <Products
@@ -81,7 +87,7 @@ const Home = () => {
                     />
                 ))}
             </Carousel>
-            <h1 className="font-bold text-[2rem] text-[#4c88a7] m-[2rem] px-[8rem] py-[2rem]">Smart Watch</h1>
+            <Heading>Smart Watch</Heading>
             <Carousel breakPoints={breakPoints} >
                 {smartWatch.map((product, index) => (
                     <Products
@@ -102,6 +108,22 @@ const Home = () => {
         </div>
     );
 }
+
+const Heading = styled.h1`
+    font-size: 2rem;
+    font-weight:bold;
+    color:#4c88a7;
+    margin:2rem;
+    padding: 2rem 8rem;
+
+    @media (max-width:550px) {
+        margin : 1rem;
+        font-size:1.5rem;
+        padding:1rem 6rem;
+    }
+
+`;
+
 
 
 

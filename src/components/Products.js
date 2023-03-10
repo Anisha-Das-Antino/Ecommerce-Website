@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import { CartState } from "./context/Context";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Products = ({ product, id, img, price, company }) => {
 
@@ -14,8 +15,8 @@ const Products = ({ product, id, img, price, company }) => {
 
 
   return (
-    <div id={id} className="inline-block px-[1rem] pb-[4rem] ">
-      <Card style={{ width: "18rem", left: "32px" }}>
+    <div id={id} className="inline-block px-[1rem] pb-[4rem]  ">
+      <Card >
         <Card.Img variant="top" src={img} />
         <Card.Body>
           <Card.Title>{company}</Card.Title>
@@ -23,7 +24,7 @@ const Products = ({ product, id, img, price, company }) => {
             $ {price}
           </Card.Text>
 
-          <div className="flex justify-between">
+          <Bttn>
             <Link to={`/details/${id}`}>
             <Button
 
@@ -72,11 +73,26 @@ const Products = ({ product, id, img, price, company }) => {
                 {!id ? "Out of Stock" : "Add to Cart"}{" "}
               </Button>
             )}
-          </div>
+          </Bttn>
         </Card.Body>
       </Card>
     </div>
   );
 };
+
+const Bttn = styled.div`
+  display:flex;
+  justify-content: space-between;
+
+  @media (max-width: 400px) {
+    flex-direction:column;
+    justify-content: space-between;
+    gap:12px;
+    &:last-of-type {
+      margin-top : 1rem;
+    }
+
+  }
+`;
 
 export default Products;

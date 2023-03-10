@@ -45,6 +45,7 @@ const Cart = () => {
           <ListGroup>
             {cart.map((product) => (
               <ListGroup.Item key={product.id}>
+                
                 <Row>
                   <Col md={2}>
                     <Image
@@ -102,6 +103,7 @@ const Cart = () => {
                     </Button>
                   </Col>
                 </Row>
+                
               </ListGroup.Item>
             ))}
           </ListGroup>

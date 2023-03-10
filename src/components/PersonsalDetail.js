@@ -10,9 +10,11 @@ import {
 } from "../components/Authentic/Styles";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
+const PersonalDetail = () => {
 
-const PersonsalDetail = () => {
+  const BASE_URL = "https://a522-2401-4900-1cbd-f9a6-d9c3-2646-5ce8-316.in.ngrok.io/profile/user/";
   const {
     register,
     handleSubmit,
@@ -25,30 +27,32 @@ const PersonsalDetail = () => {
     navigate("/cart/personalDetails/address");
     console.log(data);
 
-    // try {
-    //     const response =  axios.post(BASE_URL,
-    //         {
-    //             
-    //         });
-    //     console.log("response");
-    //     console.log(response.data.status);
-    //     if (response.data.status === 200) {
-    //         navigate("/cart/personalDetails/address");
-    //     }
+    try {
+        const response =  axios.post(BASE_URL,
+            {
+             first_name: data.firstName,
+             last_name : data.lastName,
+             email :data.email,
+             phone_number : data.number   
+            });
+        console.log("response");
+        console.log(response.data.status);
+        if (response.data.status === 200) {
+            navigate("/cart/personalDetails/address");
+        }
 
-    // }
-    // catch (e) {
-    //     console.log(errors);
-    // }
+    }
+    catch (e) {
+        console.log(errors);
+    }
   };
  
   
-
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
       <CardWrapper>
         <CardHeader>
-          <CardHeading>Personsal Detail</CardHeading>
+          <CardHeading>Personal Detail</CardHeading>
         </CardHeader>
 
         <CardBody>
@@ -119,4 +123,4 @@ const PersonsalDetail = () => {
   );
 }
 
-export default PersonsalDetail;
+export default PersonalDetail;

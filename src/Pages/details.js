@@ -5,6 +5,7 @@ import { CartState } from "../components/context/Context";
 import data from "../utils/product";
 import Nav from "../components/Nav";
 import { Button } from "react-bootstrap";
+import styled from "styled-components";
 
 const Details = () => {
   const { id } = useParams();
@@ -41,9 +42,9 @@ const Details = () => {
   return (
     <div>
       <Nav />
-      <div className="flex">
-        <div className="w-[100%] px-[12rem] py-[8.5rem] m-auto flex">
-          <div className="w-[30%] h-[30%]" >
+      < div>
+        <Sty >
+          <div >
             <img
               src={product.img}
               alt="name"
@@ -100,10 +101,30 @@ const Details = () => {
             )}
 
           </div>
-        </div>
+        </Sty>
       </div>
     </div>
   );
 }
+
+const Sty = styled.div`
+  display:flex;
+  width: 100%;
+  align-items:center;
+  gap:20px;
+  margin-auto;
+  padding-top:10%;
+  padding-left:30%;
+
+  @media (max-width:850px){
+    padding-left:20%;
+  }
+  @media (max-width:650px){
+    padding-left:10%;
+  }
+  @media (max-width:520px){
+   flex-direction:column;
+  }
+`;
 
 export default Details;
