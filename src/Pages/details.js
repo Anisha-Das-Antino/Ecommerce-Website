@@ -6,9 +6,11 @@ import data from "../utils/product";
 import Nav from "../components/Nav";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 
 const Details = () => {
   const { id } = useParams();
+  
   const [product, setProduct] = useState(null);
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
@@ -103,6 +105,7 @@ const Details = () => {
           </div>
         </Sty>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -15,6 +15,11 @@ const Nav = () => {
   } = CartState();
 
   const [search, setSearch] = useState("");
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search/${search}`);
+    setSearch("");
+  };
 
   const navigate = useNavigate();
 
@@ -27,7 +32,7 @@ const Nav = () => {
       </div>
 
       <div>
-        <Form className="d-flex "  onSubmit={(()=>navigate(`/search/${search}`))} >
+        <Form className="d-flex "  onSubmit={handleSearch} >
           <Form.Control
             type="search"
             placeholder="Search"

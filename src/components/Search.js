@@ -1,86 +1,54 @@
 import React, { useState } from "react";
 import product from "../utils/product.json";
 import Products from "./Products";
+import { useParams } from "react-router-dom";
+import Nav from "./Nav";
+import Carousel from "react-elastic-carousel";
+import Footer from "./Footer";
 
 const Search = () => {
+  const { title } = useParams();
   const [products, setProducts] = useState(product);
-  const [search, setSearch] = useState("");
+
   console.log(products);
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+    { width: 850, itemsToShow: 3 },
+    { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
+    { width: 1450, itemsToShow: 5 },
+    { width: 1750, itemsToShow: 6 },
+  ];
+
   const filteredProducts = products.filter((prod) => {
-    if (
-      prod.title.toLowerCase().includes(search)
-    ) {
+    if (prod.title.toLowerCase().includes(title)) {
       return prod;
     }
   });
+  console.log(title);
 
   return (
     <div>
-      <input
-      
-      placeholder="Search"
-        onChange={(e) => {
-          setSearch(e.target.value.toLowerCase());
-        }}
-      />
-      
-      {filteredProducts.map((prod, index) => (
-        <Products
-          prod={prod}
-          id={prod.id}
-          key={index}
-          title={prod.title}
-          price={prod.price}
-          img={prod.img}
-          company={prod.company}
+      <Nav />
+      <div className="pt-[4rem]">
+        <Carousel breakPoints={breakPoints}>
+          {filteredProducts.map((product, index) => (
+            <Products
+            product={product}
+            id={product.id}
+            key={index}
+            title={product.title}
+            price={product.price}
+            img={product.img}
+            company={product.company}
         />
-      ))}
+          ))}
+        </Carousel>
+      </div>
+      <Footer />
     </div>
   );
 };
 
 export default Search;
-
-// import { useState } from "react";
-// import { Link } from "react-router-dom";
-// import { Products } from "./Products";
-
-// const Search = () => {
-//   const [query, setQuery] = useState("");
-//   const [results, setResults] = useState([]);
-
-//   const handleInputChange = (e) => {
-//     setQuery(e.target.value);
-//     searchProducts(e.target.value);
-//   };
-
-//   const searchProducts = (query) => {
-//     const filteredResults = Products.filter((product) =>
-//       product.title.toLowerCase().includes(query.toLowerCase())
-//     );
-//     setResults(filteredResults);
-//   };
-
-//   return (
-//     <div className="search-container">
-//       <form>
-//         <input
-//           type="text"
-//           placeholder="Search by title..."
-//           value={query}
-//           onChange={handleInputChange}
-//         />
-//       </form>
-//       <ul className="search-results">
-//         {results.map((result) => (
-//           <li key={result.id}>
-//             <Link to={`/details/${result.id}`}>{result.title}</Link>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default Search;
