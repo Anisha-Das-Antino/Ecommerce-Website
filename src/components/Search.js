@@ -1,16 +1,68 @@
-import React, { useState } from "react";
-import product from "../utils/product.json";
+import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import { useParams } from "react-router-dom";
 import Nav from "./Nav";
 import Carousel from "react-elastic-carousel";
 import Footer from "./Footer";
+import axios from "axios";
+import { CartState } from "./context/Context";
 
 const Search = () => {
+  const {
+    state: { cart },
+    dispatch,
+  } = CartState();
   const { title } = useParams();
-  const [products, setProducts] = useState(product);
 
-  console.log(products);
+  const url = `http://127.0.0.1:8000/search/?name=${title}`;
+
+  const [products, setProducts] = useState([]);
+  useEffect(()=>{
+    axios
+    .get(url)
+    .then((res) => {
+      setProducts(res?.data);
+    })
+    .catch((e) => console.log(e));
+  },[])
+  
+
+    const handleAddToCart = (product_id, product) => {
+      console.log({ product_id });
+      const email = localStorage.getItem("email");
+      const url = `http://127.0.0.1:8000/cart/?id=${product_id}&email=${email}`;
+      axios
+        .get(url)
+        .then((res) => {
+          console.log(res);
+        })
+        .then(
+          dispatch({
+            type: "ADD_TO_CART",
+            payload: product,
+          })
+        )
+        .catch((e) => console.log(e));
+    };
+  
+    const handleRemoveFromCart = (product_id, product) => {
+      console.log({ product_id });
+      const email = localStorage.getItem("email");
+      const url = `http://127.0.0.1:8000/cart/delete/?id=${product_id}&email=${email}`;
+      axios
+        .delete(url)
+        .then((res) => {
+          console.log(res);
+        })
+        .then(
+          dispatch({
+            type: "REMOVE_FROM_CART",
+            payload: product,
+          })
+        )
+        .catch((e) => console.log(e));
+    };
+  
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -22,27 +74,28 @@ const Search = () => {
   ];
 
   const filteredProducts = products.filter((prod) => {
-    if (prod.title.toLowerCase().includes(title)) {
+    if (prod.product_name.toLowerCase().includes(title)) {
       return prod;
     }
   });
-  console.log(title);
 
   return (
     <div>
       <Nav />
       <div className="pt-[4rem]">
         <Carousel breakPoints={breakPoints}>
-          {filteredProducts.map((product, index) => (
+          {filteredProducts.map((product) => (
             <Products
-            product={product}
-            id={product.id}
-            key={index}
-            title={product.title}
-            price={product.price}
-            img={product.img}
-            company={product.company}
-        />
+              product={product}
+              id={product?.id}
+              key={product?.id}
+              title={product?.product_category}
+              price={product?.product_price}
+              img={product?.product_Image}
+              company={product?.product_name}
+              handleCart={() => handleAddToCart(product?.id, product)}
+                handleRemove={() => handleRemoveFromCart(product?.id, product)}
+            />
           ))}
         </Carousel>
       </div>

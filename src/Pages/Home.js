@@ -4,139 +4,227 @@ import CarouselComponent from "../components/Carousel";
 import Products from "../components/Products";
 import Carousel from "react-elastic-carousel";
 import Footer from "../components/Footer";
-
-import headPhone from "../utils/headPhone.json";
-import charger from "../utils/charger.json";
-import laptop from "../utils/laptop.json";
-import mobile from "../utils/mobile.json";
-import smartWatch from "../utils/smartWatch.json";
 import styled from "styled-components";
 import axios from "axios";
-
+import { CartState } from "../components/context/Context";
+import { Button } from "react-bootstrap";
 
 const Home = () => {
-    // const BASE_URL = "https://a522-2401-4900-1cbd-f9a6-d9c3-2646-5ce8-316.in.ngrok.io/cat/product/";
-    // const [data, setData] = useState([]);
+  const BASE_URL = "http://127.0.0.1:8000/cat/category/";
+  const {
+    state: { cart },
+    dispatch,
+  } = CartState();
 
-    // useEffect(()=>{
-    //     axios.get(BASE_URL)
-    //     .then((res)=>{
-    //         setData(res.data);
-    //         console.log(res);
-    //     })
-    //     .catch((e) => console.log(e))
-    // })
+  const [data, setData] = useState([]);
 
-    const breakPoints = [
-        {width: 1, itemsToShow: 1 },
-        { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
-        { width: 850, itemsToShow: 3 },
-        { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
-        { width: 1450, itemsToShow: 5 },
-        { width: 1750, itemsToShow: 6 },
-    ]
+  useEffect(() => {
+    axios
+      .get(BASE_URL)
+      .then((res) => {
+        console.log(res?.data?.data);
+        setData(res?.data?.data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+  console.log({ data });
 
-    return (
-        <div>
-            <Nav />
-            <CarouselComponent />
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+    { width: 850, itemsToShow: 3 },
+    { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
+    { width: 1450, itemsToShow: 5 },
+    { width: 1750, itemsToShow: 6 },
+  ];
+  const handleAddToCart = (product_id, product) => {
+    console.log({ product_id });
+    const email = localStorage.getItem("email");
+    const url = `http://127.0.0.1:8000/cart/?id=${product_id}&email=${email}`;
+    axios
+      .get(url)
+      .then((res) => {
+        console.log(res);
+      })
+      .then(
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: product,
+        })
+      )
+      .catch((e) => console.log(e));
+  };
 
-            <Heading>Head Phone</Heading>
-            <Carousel breakPoints={breakPoints} >
-                {headPhone.map((product, index) => (
-                    <Products
-                        product={product}
-                        id={product.id}
-                        key={index}
-                        title={product.title}
-                        price={product.price}
-                        img={product.img}
-                        company={product.company}
-                        
-                    />
-                    
-                ))}
-            </Carousel>
-            <Heading>Mobile</Heading>
-            <Carousel breakPoints={breakPoints} >
-                {mobile.map((product, index) => (
-                    <Products
-                        product={product}
-                        id={product.id}
-                        key={index}
-                        title={product.title}
-                        price={product.price}
-                        img={product.img}
-                        company={product.company}
-                    />
-                ))}
-            </Carousel>
-            <Heading>Charger</Heading>
-            <Carousel breakPoints={breakPoints} >
-                {charger.map((product, index) => (
-                    <Products
-                        product={product}
-                        id={product.id}
-                        key={index}
-                        title={product.title}
-                        price={product.price}
-                        img={product.img}
-                        company={product.company}
-                    />
-                ))}
-            </Carousel>
-            <Heading>Laptop</Heading>
-            <Carousel breakPoints={breakPoints} >
-                {laptop.map((product, index) => (
-                    <Products
-                        product={product}
-                        id={product.id}
-                        key={index}
-                        title={product.title}
-                        price={product.price}
-                        img={product.img}
-                        company={product.company}
-                    />
-                ))}
-            </Carousel>
-            <Heading>Smart Watch</Heading>
-            <Carousel breakPoints={breakPoints} >
-                {smartWatch.map((product, index) => (
-                    <Products
-                        product={product}
-                        id={product.id}
-                        key={index}
-                        title={product.title}
-                        price={product.price}
-                        img={product.img}
-                        company={product.company}
-                    />
-                ))}
-            </Carousel>
+  const handleRemoveFromCart = (product_id, product) => {
+    console.log({ product_id });
+    const email = localStorage.getItem("email");
+    const url = `http://127.0.0.1:8000/cart/delete/?id=${product_id}&email=${email}`;
+    axios
+      .delete(url)
+      .then((res) => {
+        console.log(res);
+      })
+      .then(
+        dispatch({
+          type: "REMOVE_FROM_CART",
+          payload: product,
+        })
+      )
+      .catch((e) => console.log(e));
+  };
 
+  return (
+    <div>
+      <Nav />
+      <CarouselComponent />
 
-            <Footer />
+      {data && <Heading>{data[0]?.category}</Heading>}
+      <Container>
+        <Carousel breakPoints={breakPoints}>
+          {data &&
+            data[0]?.product_details?.map((product) => (
+              <Products
+                product={product}
+                id={product?.id}
+                key={product?.id}
+                title={product?.product_category}
+                price={product?.product_price}
+                img={product?.product_Image}
+                company={product?.product_name}
+                handleCart={() => handleAddToCart(product?.id, product)}
+                handleRemove={() => handleRemoveFromCart(product?.id, product)}
+              />
+            ))}
+        </Carousel>
 
-        </div>
-    );
-}
+        <Button className="viewMore">View More</Button>
+      </Container>
+
+      {data && <Heading>{data[1]?.category}</Heading>}
+      <Container>
+        <Carousel breakPoints={breakPoints}>
+          {data &&
+            data[1]?.product_details?.map((product) => (
+              <Products
+                product={product}
+                id={product?.id}
+                key={product?.id}
+                title={product?.product_category}
+                price={product?.product_price}
+                img={product?.product_Image}
+                company={product?.product_name}
+                handleCart={() => handleAddToCart(product?.id, product)}
+                handleRemove={() => handleRemoveFromCart(product?.id, product)}
+              />
+            ))}
+        </Carousel>
+
+        <Button className="viewMore">View More</Button>
+      </Container>
+
+      {data && <Heading>{data[2]?.category}</Heading>}
+      <Container>
+        <Carousel breakPoints={breakPoints}>
+          {data &&
+            data[2]?.product_details?.map((product) => (
+              <Products
+                product={product}
+                id={product?.id}
+                key={product?.id}
+                title={product?.product_category}
+                price={product?.product_price}
+                img={product?.product_Image}
+                company={product?.product_name}
+                handleCart={() => handleAddToCart(product?.id, product)}
+                handleRemove={() => handleRemoveFromCart(product?.id, product)}
+              />
+            ))}
+        </Carousel>
+
+        <Button className="viewMore">View More</Button>
+      </Container>
+
+      {data && <Heading>{data[3]?.category}</Heading>}
+      <Container>
+        <Carousel breakPoints={breakPoints}>
+          {data &&
+            data[3]?.product_details?.map((product) => (
+              <Products
+                product={product}
+                id={product?.id}
+                key={product?.id}
+                title={product?.product_category}
+                price={product?.product_price}
+                img={product?.product_Image}
+                company={product?.product_name}
+                handleCart={() => handleAddToCart(product?.id, product)}
+                handleRemove={() => handleRemoveFromCart(product?.id, product)}
+              />
+            ))}
+        </Carousel>
+
+        <Button className="viewMore">View More</Button>
+      </Container>
+
+      {data && <Heading>{data[4]?.category}</Heading>}
+      <Container>
+        <Carousel breakPoints={breakPoints}>
+          {data &&
+            data[4]?.product_details?.map((product) => (
+              <Products
+                product={product}
+                id={product?.id}
+                key={product?.id}
+                title={product?.product_category}
+                price={product?.product_price}
+                img={product?.product_Image}
+                company={product?.product_name}
+                handleCart={() => handleAddToCart(product?.id, product)}
+                handleRemove={() => handleRemoveFromCart(product?.id, product)}
+              />
+            ))}
+        </Carousel>
+
+        <Button className="viewMore">View More</Button>
+      </Container>
+
+      <Footer />
+    </div>
+  );
+};
 
 const Heading = styled.h1`
-    font-size: 2rem;
-    font-weight:bold;
-    color:#4c88a7;
-    margin:2rem;
-    padding: 2rem 8rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4c88a7;
+  margin: 2rem;
+  padding: 2rem 8rem;
 
-    @media (max-width:550px) {
-        margin : 1rem;
-        font-size:1.5rem;
-        padding:1rem 6rem;
-    }
-
+  @media (max-width: 550px) {
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem 6rem;
+  }
 `;
 
-
-
+const Container = styled.div`
+  position: relative;
+  .viewMore {
+    position: absolute;
+    top: 87%;
+    left: 50%;
+    color: black;
+    background: #e5195f;
+    border: none;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    @media (max-width: 987px) {
+      top: 93%;
+    }
+    @media (max-width: 669px) {
+      top: 86%;
+    }
+  }
+`;
 
 export default Home;

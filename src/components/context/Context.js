@@ -3,7 +3,6 @@ import { createContext, useState } from 'react';
 import Products from '../Products';
 import { useReducer } from 'react';
 import Reducers from './Reducers';
-import charger from "../../utils/charger.json";
 
 const Cart = createContext();
 
@@ -14,8 +13,6 @@ const Context = ({ children }) => {
         cart: [],
 
     })
-
-
 
     return (
         <Cart.Provider value={{ state, dispatch }}>{children}</Cart.Provider>

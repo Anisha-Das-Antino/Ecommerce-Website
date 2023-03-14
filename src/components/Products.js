@@ -5,19 +5,21 @@ import { CartState } from "./context/Context";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Products = ({ product, id, img, price, company }) => {
+const Products = ({ id, img, price, company,handleCart ,handleRemove}) => {
 
   const {
     state: { cart },
     dispatch, 
   } = CartState();
   const navigate = useNavigate();
+  // console.log(cart.some((p) => p.id === id))
+
 
 
   return (
     <div id={id} className="inline-block px-[1rem] pb-[4rem]  ">
       <Card >
-        <Card.Img variant="top" src={img} />
+        <Card.Img style={{width: "260px" , height:"250px"}} variant="top" src={img} />
         <Card.Body>
           <Card.Title>{company}</Card.Title>
           <Card.Text style={{ fontWeight: "bolder", color: "#4e4246" }}>
@@ -44,12 +46,7 @@ const Products = ({ product, id, img, price, company }) => {
               <Button
                 variant="danger"
                 style={{ color: "black" }}
-                onClick={() => {
-                  dispatch({
-                    type: "REMOVE_FROM_CART",
-                    payload: product,
-                  });
-                }}
+                onClick={handleRemove}
               >
                 Remove from cart
               </Button>
@@ -61,12 +58,7 @@ const Products = ({ product, id, img, price, company }) => {
                   backgroundColor: "#e5195f",
                   border: "none",
                 }}
-                onClick={() => {
-                  dispatch({
-                    type: "ADD_TO_CART",
-                    payload: product,
-                  });
-                }}
+                onClick={handleCart}
                 disabled={!id}
               >
                 {" "}

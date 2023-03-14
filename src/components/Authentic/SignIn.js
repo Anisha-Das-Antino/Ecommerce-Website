@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 
 function SignIn({ setToken }) {
-    const BASE_URL = "https://a522-2401-4900-1cbd-f9a6-d9c3-2646-5ce8-316.in.ngrok.io/auth/login/";
+    const BASE_URL = "http://127.0.0.1:8000/auth/login/";
 
 
     const { register, handleSubmit , formState: { errors } } = useForm();

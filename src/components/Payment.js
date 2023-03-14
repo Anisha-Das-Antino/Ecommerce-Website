@@ -19,7 +19,7 @@ const Payment = () => {
 
   const generateOrder = async () => {
     // Replace this with your server-side code to generate an order ID
-    const response = await fetch("/api/generate-order", {
+    const response = await fetch("", {
       method: "POST",
       body: JSON.stringify({
         amount: totalAmount,
@@ -35,7 +35,7 @@ const Payment = () => {
 
   const handlePayment = async () => {
     const options = {
-      key: "YOUR_RAZORPAY_KEY",
+      key: "rzp_test_RvZMKKMeb2v3et",
       amount: totalAmount * 100, // Razorpay accepts amount in paisa
       currency: "INR", // Replace with your currency code
       name: "My Store",

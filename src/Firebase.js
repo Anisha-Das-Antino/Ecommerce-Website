@@ -18,9 +18,9 @@ const auth = getAuth(app);
 const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider).then((result) => {
-    console.log(result?.user?.accessToken,"---------------");
+    console.log(result?.user?.email,"---------------");
     localStorage.setItem("token",result?.user?.accessToken)
-
+    localStorage.setItem("email",result?.user?.email)
   }).catch((error) => {
     console.log(error);
   });

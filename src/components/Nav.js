@@ -15,6 +15,7 @@ const Nav = () => {
   } = CartState();
 
   const [search, setSearch] = useState("");
+  
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(`/search/${search}`);

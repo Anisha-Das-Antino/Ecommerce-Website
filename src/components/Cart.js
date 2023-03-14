@@ -6,6 +6,7 @@ import { AiFillDelete, AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Nav from "./Nav";
+import axios from "axios";
 
 const Cart = () => {
   const {
@@ -15,9 +16,20 @@ const Cart = () => {
 
   const [total, setTotal] = useState();
   useEffect(() => {
+
+    const email = localStorage.getItem("email");
+    const url = `http://127.0.0.1:8000/cart/?&email=${email}`;
+    axios
+      .get(url)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => console.log(e));
     setTotal(
       cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
     );
+
+    
   }, [cart]);
 
   const handleQtyChange = (product, qty) => {
