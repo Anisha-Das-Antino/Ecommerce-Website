@@ -87,11 +87,11 @@ const Details = () => {
           </div>
 
           <div className="justify-between m-[2rem]  ">
-            <h2 className="pb-[1rem] font-semibold">{product?.product_name}</h2>
+            <h2 className="pb-[0.6rem] font-bold text-[23px] ">{product?.product_name}</h2>
             {/* <p className="pb-[1rem] ">{product.company}</p> */}
 
-            <p className="pb-[1rem]">{product?.product_dic}</p>
-            <h3 className="pb-[1rem] font-bold">$ {product?.product_price}</h3>
+            <p className="pb-[0.6rem] font-semibold text-[15px]">{product?.product_dic}</p>
+            <h3 className="pb-[0.6rem] text-[17px] font-bold">$ {product?.product_price}</h3>
 
             <Rating
               count={5} // number of rating stars
@@ -104,7 +104,7 @@ const Details = () => {
             {cart.some((p) => p.id === +id) ? (
               <Button
                 variant="danger"
-                style={{ color: "black" }}
+                style={{ color: "black" , paddingTop: "0.6rem"}}
                 onClick={() => handleRemoveFromCart(id, product)}
               >
                 Remove from cart
@@ -113,7 +113,7 @@ const Details = () => {
               <Button
                 type="submit"
                 style={{
-                  color: "black",
+                  color: "white",
                   backgroundColor: "#e5195f",
                   border: "none",
                 }}

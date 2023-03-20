@@ -7,19 +7,57 @@ import Button from "react-bootstrap/Button";
 import { CartState } from "./context/Context";
 import "../styles.css";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Nav = () => {
   const {
     state: { cart },
   } = CartState();
-
-  const [search, setSearch] = useState("");
   
+  const [text, setText] = useState("");
+  console.log("hwjashjas",text)
+
+  // const [url, set]
+  const url = `http://127.0.0.1:8000/search/?name=${text}`;
+  const urlwithoutText=`http://127.0.0.1:8000/search/`
+  console.log(text);
+  const [user, setUser] = useState([]);
+  const [suggestion, setSuggestion] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(text?url:urlwithoutText)
+      .then((res) => {
+        setUser(res?.data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+  console.log(user);
+
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/search/${search}`);
-    setSearch("");
+    navigate(`/search/${text}`);
+    setText("");
+    setSuggestion([]);
+  };
+
+  const onSuggestHandle = (text) => {
+    setText(text);
+    setSuggestion([]);
+  };
+
+  const onChangeHandler = (text) => {
+    let matches = [];
+    if (text.length > 0) {
+      matches = user.filter((usr) => {
+        const regex = new RegExp(`${text}`, "gi");
+        return usr.product_name.match(regex);
+      });
+    }
+    console.log(matches);
+    setSuggestion(matches);
+    setText(text);
   };
 
   const navigate = useNavigate();
@@ -31,22 +69,41 @@ const Nav = () => {
           <h1 style={{ color: "black" }}>ANTINO</h1>
         </Link>
       </div>
-
       <div>
-        <Form className="d-flex "  onSubmit={handleSearch} >
-          <Form.Control
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-            onChange={(e) => {
-              setSearch(e.target.value.toLowerCase());
-            }}
-          />
-          <Button type="search"  variant="light" >
-            Search
-          </Button>
-        </Form>
+        <div>
+          <Form className="d-flex relative" onSubmit={handleSearch}>
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              onChange={(e) => onChangeHandler(e.target.value)}
+              value={text}
+              // onBlur={() => {
+              //   setTimeout(() => {
+              //     setSuggestion([]);
+              //   }, 100);
+              // }}
+            />
+
+            <Button type="search" variant="light">
+              Search
+            </Button>
+
+            <div className="  bg-[#d8d8d8] absolute mt-[50px] z-[1] rounded-[10px] h-[120px] overflow-auto">
+              {suggestion &&
+                suggestion.map((suggestion) => (
+                  <div
+                    key={suggestion.id}
+                    onClick={() => onSuggestHandle(suggestion.product_name)}
+                    className="cursor-pointer pl-4 hover:bg-[grey] hover:text-white rounded-[7px] w-[200px]   "
+                  >
+                    {suggestion.product_name}
+                  </div>
+                ))}
+            </div>
+          </Form>
+        </div>
       </div>
 
       <div>
@@ -92,12 +149,11 @@ const Naav = styled.nav`
   justify-content: space-between;
 
   @media (max-width: 880px) {
-    flex-direction:column;
+    flex-direction: column;
     align-items: center;
     background: #a0a2a3;
     justify-content: space-between;
     height: 30vh;
-    
   }
 `;
 

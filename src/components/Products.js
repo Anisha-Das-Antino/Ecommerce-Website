@@ -19,7 +19,7 @@ const Products = ({ id, img, price, company,handleCart ,handleRemove}) => {
   return (
     <div id={id} className="inline-block px-[1rem] pb-[4rem]  ">
       <Card >
-        <Card.Img style={{width: "260px" , height:"250px"}} variant="top" src={img} />
+        <Card.Img style={{width: "260px" , height:"250px", objectFit:"cover"}} variant="top" src={img} />
         <Card.Body>
           <Card.Title>{company}</Card.Title>
           <Card.Text style={{ fontWeight: "bolder", color: "#4e4246" }}>
@@ -32,7 +32,7 @@ const Products = ({ id, img, price, company,handleCart ,handleRemove}) => {
 
               type="submit"
               style={{
-                color: "black",
+                color: "white",
                 backgroundColor: "#e5195f",
                 border: "none",
               }}
@@ -54,7 +54,7 @@ const Products = ({ id, img, price, company,handleCart ,handleRemove}) => {
               <Button
                 type="submit"
                 style={{
-                  color: "black",
+                  color: "white",
                   backgroundColor: "#e5195f",
                   border: "none",
                 }}

@@ -10,6 +10,8 @@ import PersonalDetails from "../PersonsalDetail";
 import Address from "../Address";
 import Payment from "../Payment";
 import Search from "../Search";
+import ViewMore from "../ViewMore";
+import { useParams } from "react-router-dom";
 
 function Auth({ setToken }) {
   const token = localStorage.getItem("token");
@@ -24,7 +26,6 @@ function Auth({ setToken }) {
       navigate("/signIn");
     }
   }, [token]);
-
   return (
     <AuthStyle>
       <Routes>
@@ -37,6 +38,8 @@ function Auth({ setToken }) {
         <Route path="/cart/personalDetails/address" element={<Address />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/search/:title" element={<Search />} />
+        <Route path="/search/" element={<Search />} />
+        <Route path ="/view_more/:code" element={<ViewMore/>} />
       </Routes>
     </AuthStyle>
   );

@@ -9,12 +9,12 @@ class CarouselComponent extends React.Component {
                 <div className='container-fluid' >
 
                     <div className="row">
-                        <div className="col-12 py-[4rem] px-[3rem] w-100 m-auto " >
+                        <div className="col-12 py-[3rem] px-[3rem] w-100 m-auto " >
                             <Carousel>
                                 <Carousel.Item >
                                     <img
                                         className="d-block w-100 "
-                                        style={{ height: "60vh" }}
+                                        style={{ height: "70vh", objectFit:"cover" }}
                                         src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvcHBpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
                                         alt="First slide"
                                     />
@@ -26,7 +26,7 @@ class CarouselComponent extends React.Component {
                                 <Carousel.Item>
                                     <img
                                         className="d-block w-100"
-                                        style={{ height: "60vh" }}
+                                        style={{ height: "70vh", objectFit:"cover" }}
                                         src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZhc2hpb258ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
                                         alt="Second slide"
                                     />
@@ -38,7 +38,7 @@ class CarouselComponent extends React.Component {
                                 <Carousel.Item>
                                     <img
                                         className="d-block w-100"
-                                        style={{ height: "60vh" }}
+                                        style={{ height: "70vh", objectFit:"cover" }}
                                         src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z2FkZ2V0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
                                         alt="Third slide"
                                     />

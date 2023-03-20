@@ -1,38 +1,46 @@
-import React, { useEffect, useState } from "react";
-import Products from "./Products";
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Nav from "./Nav";
-import Footer from "./Footer";
-import axios from "axios";
+import Products from "./Products";
 import { CartState } from "./context/Context";
 import Pagination from "./Pagination";
+import Footer from "./Footer";
 
-const Search = () => {
+const ViewMore = () => {
+  const params = useParams();
+  console.log(params.code, "=====================");
+  const category = params.code.split("_").join(" ") || "";
+  console.log({ category });
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(0);
+  const [len , setLen] = useState(0);
+
+  const BASE_URL = `http://127.0.0.1:8000/cat/cate/${category}/?page=${currentPage}`;
+
+  const [data, setData] = useState([]);
+  console.log(currentPage);
+
   const {
     state: { cart },
     dispatch,
   } = CartState();
-  const { title } = useParams();
-  
-  
-  
-  const url = `http://127.0.0.1:8000/search/?name=${title}`;
-  const urlwithoutText=`http://127.0.0.1:8000/search/`
 
-  const [products, setProducts] = useState([]);
-  
   useEffect(() => {
     axios
-      .get(title?url:urlwithoutText)
+      .get(BASE_URL)
       .then((res) => {
-        setProducts(res?.data);
+        console.log(res?.data?.data);
+        setData(res?.data?.data);
+        setLen(res?.data?.count);
+        setPostPerPage(res?.data?.limit);
       })
       .catch((e) => console.log(e));
-  }, [title]);
+  }, [currentPage]);
+  console.log({len});
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(8);
-  
+  console.log({ data });
 
   const handleAddToCart = (product_id, product) => {
     console.log({ product_id });
@@ -70,20 +78,18 @@ const Search = () => {
       .catch((e) => console.log(e));
   };
 
-  console.log(products.length);
-
   const lastPostIndex = currentPage * postPerPage;
   const firPostIndex = lastPostIndex - postPerPage;
-  const currentPost = products.slice(firPostIndex, lastPostIndex);
-  console.log(currentPost,"cc");
-  
+  const currentPost = data.slice(firPostIndex, lastPostIndex);
+  console.log(currentPost, "cc");
 
   return (
     <div>
       <Nav />
-      <div className="pt-[4rem] m-auto px-[3%]" >
-        
-          {currentPost.map((product) => (
+
+      <div className="pt-[3rem] pl-[3rem] m-auto">
+        {data &&
+          data?.map((product) => (
             <Products
               product={product}
               id={product?.id}
@@ -96,17 +102,16 @@ const Search = () => {
               handleRemove={() => handleRemoveFromCart(product?.id, product)}
             />
           ))}
-          <Pagination
-            totalPost={products.length}
-            postPerPage={postPerPage}
-            setCurrentPage={setCurrentPage} 
-          />
-          
-        
+
+        <Pagination
+          totalPost={len}
+          postPerPage={postPerPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
       <Footer />
     </div>
   );
 };
 
-export default Search;
+export default ViewMore;

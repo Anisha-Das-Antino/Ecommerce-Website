@@ -8,9 +8,11 @@ import styled from "styled-components";
 import axios from "axios";
 import { CartState } from "../components/context/Context";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const BASE_URL = "http://127.0.0.1:8000/cat/category/";
+  const navigate = useNavigate();
   const {
     state: { cart },
     dispatch,
@@ -82,7 +84,7 @@ const Home = () => {
       <Container>
         <Carousel breakPoints={breakPoints}>
           {data &&
-            data[0]?.product_details?.map((product) => (
+            data[0]?.product_details?.slice(0,6)?.map((product) => (
               <Products
                 product={product}
                 id={product?.id}
@@ -96,15 +98,16 @@ const Home = () => {
               />
             ))}
         </Carousel>
-
-        <Button className="viewMore">View More</Button>
+       
+        <Button className="viewMore" onClick={()=> navigate(`/view_more/${data[0]?.category?.split(" ").join("_")}`)}>View More</Button>
+        
       </Container>
 
       {data && <Heading>{data[1]?.category}</Heading>}
       <Container>
         <Carousel breakPoints={breakPoints}>
           {data &&
-            data[1]?.product_details?.map((product) => (
+            data[1]?.product_details?.slice(0,6)?.map((product) => (
               <Products
                 product={product}
                 id={product?.id}
@@ -119,14 +122,14 @@ const Home = () => {
             ))}
         </Carousel>
 
-        <Button className="viewMore">View More</Button>
+        <Button className="viewMore" onClick={()=> navigate(`/view_more/${data[1]?.category?.split(" ").join("_")}`)}>View More</Button>
       </Container>
 
       {data && <Heading>{data[2]?.category}</Heading>}
       <Container>
         <Carousel breakPoints={breakPoints}>
           {data &&
-            data[2]?.product_details?.map((product) => (
+            data[2]?.product_details?.slice(0,6)?.map((product) => (
               <Products
                 product={product}
                 id={product?.id}
@@ -141,14 +144,14 @@ const Home = () => {
             ))}
         </Carousel>
 
-        <Button className="viewMore">View More</Button>
+        <Button className="viewMore" onClick={()=> navigate(`/view_more/${data[2]?.category?.split(" ").join("_")}`)}>View More</Button>
       </Container>
 
       {data && <Heading>{data[3]?.category}</Heading>}
       <Container>
         <Carousel breakPoints={breakPoints}>
           {data &&
-            data[3]?.product_details?.map((product) => (
+            data[3]?.product_details?.slice(0,6)?.map((product) => (
               <Products
                 product={product}
                 id={product?.id}
@@ -163,14 +166,14 @@ const Home = () => {
             ))}
         </Carousel>
 
-        <Button className="viewMore">View More</Button>
+        <Button className="viewMore" onClick={()=> navigate(`/view_more/${data[3]?.category?.split(" ").join("_")}`)}>View More</Button>
       </Container>
 
       {data && <Heading>{data[4]?.category}</Heading>}
       <Container>
         <Carousel breakPoints={breakPoints}>
           {data &&
-            data[4]?.product_details?.map((product) => (
+            data[4]?.product_details?.slice(0,6)?.map((product) => (
               <Products
                 product={product}
                 id={product?.id}
@@ -185,7 +188,7 @@ const Home = () => {
             ))}
         </Carousel>
 
-        <Button className="viewMore">View More</Button>
+        <Button className="viewMore" onClick={()=> navigate(`/view_more/${data[4]?.category?.split(" ").join("_")}`)}>View More</Button>
       </Container>
 
       <Footer />
@@ -197,8 +200,8 @@ const Heading = styled.h1`
   font-size: 2rem;
   font-weight: bold;
   color: #4c88a7;
-  margin: 2rem;
-  padding: 2rem 8rem;
+  margin: 1rem;
+  padding: 1.5rem 7rem;
 
   @media (max-width: 550px) {
     margin: 1rem;
@@ -213,7 +216,7 @@ const Container = styled.div`
     position: absolute;
     top: 87%;
     left: 50%;
-    color: black;
+    color: white;
     background: #e5195f;
     border: none;
     -ms-transform: translate(-50%, -50%);
