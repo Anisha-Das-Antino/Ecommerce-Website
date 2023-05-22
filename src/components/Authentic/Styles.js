@@ -10,7 +10,6 @@ export const CardWrapper = styled.div`
   border-radius: 5px;
 `;
 
-
 export const CardHeader = styled.header`
   padding-top: 32px;
   padding-bottom: 32px;
@@ -63,8 +62,6 @@ export const CardInput = styled.input`
   }
 `;
 
-
-
 export const CardOptionsNote = styled.small`
   padding-top: 8px;
   display: block;
@@ -87,11 +84,9 @@ export const CardOptions = styled.ul`
 `;
 
 export const CardOptionsItem = styled.li`
-
   &:nth-of-type(n + 2) {
     margin-left: 16px;
   }
-  
 `;
 
 export const CardButton = styled.button`

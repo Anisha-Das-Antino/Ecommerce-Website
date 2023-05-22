@@ -8,40 +8,34 @@ import Footer from "../Footer";
 import { CartState } from "../context/Context";
 
 const Home = () => {
-    const [products, setProducts] = useState(data);
-    // const {products} = useSelector((state) => state.product);
-    // const { state: { prod }, } = CartState();
-    
-    // console.log(prod);
-    const breakPoints = [
-        { width: 1, itemsToShow: 3 }
-    ]
-    return (
-        <div>
+  const [products, setProducts] = useState(data);
+  // const {products} = useSelector((state) => state.product);
+  // const { state: { prod }, } = CartState();
 
-            <Nav />
-            <CarouselComponent />
+  // console.log(prod);
+  const breakPoints = [{ width: 1, itemsToShow: 3 }];
+  return (
+    <div>
+      <Nav />
+      <CarouselComponent />
 
-            <Carousel breakPoints={breakPoints} >
-                {products.map((product, index) => (
-                    <Products
-                        product = {product}
-                        id={product.id}
-                        key={index}
-                        title={product.title}
-                        price={product.price}
-                        button={product.button}
-                        img={product.img}
-                    />
-                ))}
-            </Carousel>
+      <Carousel breakPoints={breakPoints}>
+        {products.map((product, index) => (
+          <Products
+            product={product}
+            id={product.id}
+            key={index}
+            title={product.title}
+            price={product.price}
+            button={product.button}
+            img={product.img}
+          />
+        ))}
+      </Carousel>
 
-            <Footer />
-
-        </div>
-    );
-}
-
-
+      <Footer />
+    </div>
+  );
+};
 
 export default Home;

@@ -1,17 +1,17 @@
 [
     {
-        "img": "https://picsum.photos/500/300?img=1",
+        "img": "https://ps.w.org/rs-wp-books-showcase/assets/banner-1544x500.png?rev=2713539",
         "caption": "First slide label",
-        "data": "Nulla vitae elit libero, a pharetra augue mollis interdum."
+        "data": "50% off in-store offers. Shop now."
     },
     {
-        "img" : "https://picsum.photos/500/300?img=2",
+        "img" : "https://images.pexels.com/photos/2465877/pexels-photo-2465877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         "caption" : "Second slide label",
-        "data" : "Nulla vitae elit libero, a pharetra augue mollis interdum."
+        "data" : "A brand new book from India's best loved author, on the joys of growing old."
     },
     {
-        "img" : "https://picsum.photos/500/300?img=3",
-        "caption" : "Third slide label",
-        "data" : "Nulla vitae elit libero, a pharetra augue mollis interdum."
+        "img" : "https://images.pexels.com/photos/2943603/pexels-photo-2943603.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        "caption" : "Antino Bookstore",
+        "data" : "Wide selection | 25M+ | in 8+ languages"
     }
 ]

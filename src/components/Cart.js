@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import { CartState } from "./context/Context";
-import { Image, ListGroup, Button, Row, Col, Form } from 'react-bootstrap';
+import { Image, ListGroup, Button, Row, Col, Form } from "react-bootstrap";
 import "../styles.css";
-import { useState, useEffect } from 'react';
-import { AiFillDelete } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import Nav from './Nav';
+import { useState, useEffect } from "react";
+import { AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import Nav from "./Nav";
 const Cart = () => {
   const {
     state: { cart },
@@ -19,28 +19,33 @@ const Cart = () => {
     );
   }, [cart]);
 
-
   return (
     <div>
       <Nav />
-      <div className='home'>
-        <div className='productContainer'>
+      <div className="home">
+        <div className="productContainer">
           <ListGroup>
             {cart.map((product) => (
-
               <ListGroup.Item key={product.id}>
                 <Row>
                   <Col md={2}>
-                    <Image src={product.img} alt={product.title} fluid rounded />
+                    <Image
+                      src={product.img}
+                      alt={product.title}
+                      fluid
+                      rounded
+                    />
                   </Col>
                   <Col md={2}>
                     <span>{product.title}</span>
                   </Col>
                   <Col md={3}>
-                    <span>$ {product.price}</span>
+                    <span>₹ {product.price}</span>
                   </Col>
                   <Col md={2}>
-                    <Form.Control as="select" value={product.qty}
+                    <Form.Control
+                      as="select"
+                      value={product.qty}
                       onChange={(e) =>
                         dispatch({
                           type: "CHANGE_CART_QTY",
@@ -70,24 +75,25 @@ const Cart = () => {
                       <AiFillDelete fontSize="20px" />
                     </Button>
                   </Col>
-
                 </Row>
               </ListGroup.Item>
-
             ))}
           </ListGroup>
         </div>
 
-        <div className='filters summary'>
-          <span className='title'> Subtotal ({cart.length}) items</span>
-          <span style={{ fontWeight: 700, fontSize: 20 }}>Total $ {total}</span>
-          {/* <Link to="/"> */}
-          <Button type='button' disabled={cart.length === 0} > Proceed to Checkout</Button>
-          {/* </Link> */}
+        <div className="filters summary">
+          <span className="title"> Subtotal ({cart.length}) items</span>
+          <span style={{ fontWeight: 700, fontSize: 20 }}>Total ₹ {total}</span>
+          <Link to="/checkout">
+            <Button type="button" disabled={cart.length === 0}>
+              {" "}
+              Proceed to Checkout
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
